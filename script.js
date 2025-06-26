@@ -552,3 +552,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.head.appendChild(dynamicStyles);
 });
+
+//mail service
+(function () {
+    emailjs.init("3zOu3o6Jf21sH9qJ_");
+})();
+
+document.getElementById('contact-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_ttjhj3j', 'template_9zm5g3t', this)
+        .then(function () {
+            alert('Message sent successfully!');
+            document.getElementById('contact-form').reset();
+        }, function (error) {
+            alert('Failed to send message. Error: ' + JSON.stringify(error));
+        });
+});
+
